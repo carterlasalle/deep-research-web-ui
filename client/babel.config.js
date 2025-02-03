@@ -1,62 +1,17 @@
 module.exports = {
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          targets: {
-            node: 'current',
-          },
-        },
-      ],
-      '@babel/preset-react',
-      '@babel/preset-typescript',
-    ],
-    plugins: [
-      '@babel/plugin-proposal-decorators',
-      '@babel/plugin-proposal-private-property-in-object',
-      '@babel/plugin-proposal-class-properties',
-      '@babel/plugin-proposal-numeric-separator',
-      '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-private-methods',
-      '@babel/plugin-transform-flow-strip-types',
-      '@babel/plugin-transform-react-constant-elements',
-      '@babel/plugin-transform-react-display-name',
-      '@babel/plugin-transform-runtime',
-      '@babel/plugin-transform-typescript',
-      '@babel/plugin-transform-arrow-functions',
-      '@babel/plugin-transform-async-generator-functions',
-      '@babel/plugin-transform-block-scoping',
-      '@babel/plugin-transform-classes',
-      '@babel/plugin-transform-computed-properties',
-      '@babel/plugin-transform-destructuring',
-      '@babel/plugin-transform-exponentiation-operator',
-      '@babel/plugin-transform-for-of',
-      '@babel/plugin-transform-function-name',
-      '@babel/plugin-transform-literals',
-      '@babel/plugin-transform-modules-amd',
-      '@babel/plugin-transform-modules-commonjs',
-      '@babel/plugin-transform-modules-systemjs',
-      '@babel/plugin-transform-modules-umd',
-      '@babel/plugin-transform-new-target',
-      '@babel/plugin-transform-object-rest-spread',
-      '@babel/plugin-transform-object-super',
-      '@babel/plugin-transform-optional-catch-binding',
-      '@babel/plugin-transform-parameters',
-      '@babel/plugin-transform-property-literals',
-      '@babel/plugin-transform-regenerator',
-      '@babel/plugin-transform-shorthand-properties',
-      '@babel/plugin-transform-spread',
-      '@babel/plugin-transform-sticky-regex',
-      '@babel/plugin-transform-template-literals',
-      '@babel/plugin-transform-typeof-symbol',
-      '@babel/plugin-transform-unicode-escapes',
-      [
-        '@pmmmwh/react-refresh-webpack-plugin',
-        {
-          overlay: {
-            sockIntegration: 'wds',
-          },
-        },
-      ],
-    ],
-  };
+  presets: [
+    '@babel/preset-env',
+    ['@babel/preset-react', { runtime: 'automatic' }],
+    '@babel/preset-typescript',
+  ],
+  plugins: [
+    '@babel/plugin-transform-runtime',
+    '@babel/plugin-syntax-flow',
+    ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
+  ],
+  env: {
+    development: {
+      plugins: ['react-refresh/babel'],
+    },
+  },
+};
